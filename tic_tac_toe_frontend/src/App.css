@@ -21,9 +21,15 @@
   --button-text: #ffffff;
 }
 
+body,
+#root {
+  background: red !important;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
-  background-color: var(--bg-primary);
+  background-color: transparent !important;
   color: var(--text-primary);
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
