@@ -1,0 +1,216 @@
+/* CSS Variables for Theme Management */
+:root {
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #282c34;
+  --text-secondary: #61dafb;
+  --border-color: #e9ecef;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282c34;
+  --text-primary: #ffffff;
+  --text-secondary: #61dafb;
+  --border-color: #404040;
+  --button-bg: #0056b3;
+  --button-text: #ffffff;
+}
+
+body,
+#root {
+  background: red !important;
+  min-height: 100vh;
+}
+
+.App {
+  text-align: center;
+  background-color: transparent !important;
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Tic Tac Toe minimal components */
+
+/* Board container */
+.ttt-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Status text above the board */
+.ttt-status {
+  margin-bottom: 1em;
+  font-size: 1.14em;
+}
+
+/* Game Board grid */
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0 auto;
+}
+.ttt-board-row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+/* Individual square (cell) */
+.ttt-square {
+  width: 68px;
+  height: 68px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 2.1em;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  box-shadow: 0 1.5px 4px 0 #e9ecef1f;
+  font-family: inherit;
+  user-select: none;
+}
+.ttt-square:disabled,
+.ttt-board[aria-disabled="true"] .ttt-square {
+  cursor: not-allowed;
+  opacity: 0.72;
+  background: var(--bg-secondary);
+}
+/* Winning highlight */
+.ttt-square[style*="font-weight: bold"] {
+  background: #FFEB3B33 !important;
+}
+
+/* Buttons */
+.ttt-btn {
+  border: none;
+  border-radius: 8px;
+  min-width: 89px;
+  min-height: 38px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 10px 0 #ececec30;
+  padding: 0.7em 1.7em;
+  background: #1976D2;
+  color: #fff;
+  transition: background 0.15s, box-shadow 0.22s, color 0.15s;
+  margin-right: 0.5em;
+}
+.ttt-btn:active {
+  background: #1858b4;
+}
+.ttt-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Game mode select */
+.ttt-mode-select {
+  background: #f8f9fa;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 7.5px 2.5em 7.5px 0.9em;
+  color: #282c34;
+  font-weight: 500;
+  font-size: 1em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #ececec30;
+  appearance: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .ttt-square {
+    width: 48px;
+    height: 48px;
+    font-size: 1.35em;
+  }
+  .ttt-board {
+    gap: 3px;
+  }
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.App-link {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
